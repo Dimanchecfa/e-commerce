@@ -12,9 +12,12 @@ import { loggedAdmin } from "../../../helpers/AuthGuardAdmin";
 import Swal from "sweetalert2";
 import Axios from "../../../service/caller.service";
 
+
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
     
     let navigate = useNavigate();
 
@@ -35,6 +38,7 @@ const Login = () => {
                 timer: 2000,
             });
         }
+        
 
         login(credentials)
             .then((res) => {
@@ -48,7 +52,7 @@ const Login = () => {
                     }
                     saveToken(res.data.token);
                     saveUser(user);
-
+                    
                     navigate(goTo);
                     setTimeout(() => {
                         Swal.fire({
@@ -64,6 +68,14 @@ const Login = () => {
                     }, 500);
                 }
                 else {
+                    Swal.fire({
+                        title: "Erreur",
+                        text: "Email ou mot de passe incorrect",
+
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                        timer: 2000,
+                    });
                     
                 }
                 
@@ -74,6 +86,9 @@ const Login = () => {
     };
 
     return (
+
+      <>
+        
         <div className="min-h-full flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8 ">
             <div className="max-w-md w-full space-y-8 border border-4 p-4">
                 <div>
@@ -168,6 +183,7 @@ const Login = () => {
                 </form>
             </div>
         </div>
+        </>
     );
 };
 
