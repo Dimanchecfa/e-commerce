@@ -57,10 +57,27 @@ export default () => {
         },
        
     ]
+    const AddArticle = () => {
+        console.log(yo)
+    }
     
     return (
         <section className="mt-12 mx-auto px-4 max-w-screen-xl lg:px-8 ">
             <div className="text-center py-5">
+                <div className="grid-cols-3"  >
+                    <div classname="col-span-2"  >
+
+                    </div>
+                    <div classname="col-span-1"  >
+                    <button
+                        onClick={AddArticle}
+                            type="button"
+                            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        >
+                            Add Article
+                        </button>
+                    </div>
+                </div>
                 <h1 className="text-3xl text-gray-800 font-semibold">
                     Blog
                 </h1>

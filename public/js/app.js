@@ -29942,9 +29942,167 @@ var Dashboard = function Dashboard() {
 /*!**************************************************************!*\
   !*** ./resources/js/src/pages/auth/forgot-password/index.js ***!
   \**************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/TextField */ "./node_modules/@mui/material/TextField/TextField.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _service_caller_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../service/caller.service */ "./resources/js/src/service/caller.service.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+
+
+
+
+
+var Login = function Login() {
+  //     const [email, setEmail] = useState("");
+  //     const [password, setPassword] = useState("");
+  //     let navigate = useNavigate();
+  //     const handleSubmit = (e) => {
+  //         e.preventDefault();
+  //         const credentials = {
+  //             email,
+  //             password,
+  //         };
+  //         //verifivation des champs
+  //         if (email === "" || password === "") {
+  //             return Swal.fire({
+  //                 title: "Erreur",
+  //                 text: "Veuillez remplir tous les champs",
+  //                 icon: "error",
+  //                 confirmButtonText: "Ok",
+  //                 timer: 2000,
+  //             });
+  //         }
+  //         login(credentials)
+  //             .then((res) => {
+  //                 if (res.data.success == true) {
+  //                     let user = res.data?.user;
+  //                     let success = res.data?.success;
+  //                     let goTo = "/";
+  //                     if (user?.role == "admin") {
+  //                         goTo = "/admin/dashboard";
+  //                     }
+  //                     saveToken(res.data.token);
+  //                     saveUser(user);
+  //                     navigate(goTo);
+  //                     setTimeout(() => {
+  //                         Swal.fire({
+  //                             title: "Connexion reussi",
+  //                             showClass: {
+  //                                 popup: "animate__animated animate__fadeInDown",
+  //                             },
+  //                             hideClass: {
+  //                                 popup: "animate__animated animate__fadeOutUp",
+  //                             },
+  //                             timer: 2000,
+  //                         });
+  //                     }, 500);
+  //                 }
+  //                 else {
+  //                 }
+  //             })
+  //             .catch((err) => {
+  //             });
+  //     };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "min-h-full flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8 ",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "max-w-md w-full space-y-8 border border-4 p-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+          className: "mx-auto h-12 w-auto",
+          src: "https://www.floatui.com/logo.svg",
+          alt: "Workflow"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+          className: "mt-6 text-center text-3xl font-extrabold text-gray-900",
+          children: "Sign in to your account"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+        className: "mt-8 space-y-6",
+        onSubmit: handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          type: "hidden",
+          name: "remember",
+          defaultValue: "true"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "rounded-md shadow-sm -space-y-px",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "col-span- sm:col-span-4 ",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_TextField__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              fullWidth: true,
+              label: "Email Address",
+              margin: "normal",
+              name: "email",
+              type: "email",
+              variant: "outlined",
+              value: email,
+              onChange: function onChange(e) {
+                return setEmail(e.target.value);
+              }
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "col-span-6 sm:col-span-4 ",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_TextField__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              fullWidth: true,
+              label: "Password",
+              margin: "normal",
+              name: "password",
+              type: "password",
+              variant: "outlined",
+              value: password,
+              onChange: function onChange(e) {
+                return setPassword(e.target.value);
+              }
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "flex items-center justify-between",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "flex items-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              id: "remember-me",
+              name: "remember-me",
+              type: "checkbox",
+              className: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              htmlFor: "remember-me",
+              className: "ml-2 block text-sm text-gray-900",
+              children: "Remember me"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "text-sm",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              href: "#",
+              className: "font-medium text-indigo-600 hover:text-indigo-500",
+              children: "Forgot your password?"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+            type: "submit",
+            className: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              className: "absolute left-0 inset-y-0 flex items-center pl-3"
+            }), "Sign in"]
+          })
+        })]
+      })]
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
 /***/ }),
 
@@ -30481,11 +30639,29 @@ __webpack_require__.r(__webpack_exports__);
     date: "Jan 4 2022",
     href: "javascript:void(0)"
   }];
+
+  var AddArticle = function AddArticle() {
+    console.log(yo);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
     className: "mt-12 mx-auto px-4 max-w-screen-xl lg:px-8 ",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       className: "text-center py-5",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "grid-cols-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          classname: "col-span-2"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          classname: "col-span-1",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+            onClick: AddArticle,
+            type: "button",
+            "class": "inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out",
+            children: "Add Article"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
         className: "text-3xl text-gray-800 font-semibold",
         children: "Blog"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
@@ -31012,7 +31188,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_auth_login_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/auth/login/index */ "./resources/js/src/pages/auth/login/index.js");
 /* harmony import */ var _pages_auth_register_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/auth/register/index */ "./resources/js/src/pages/auth/register/index.js");
 /* harmony import */ var _pages_auth_forgot_password_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/auth/forgot-password/index */ "./resources/js/src/pages/auth/forgot-password/index.js");
-/* harmony import */ var _pages_auth_forgot_password_index__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pages_auth_forgot_password_index__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _pages_other_Not_Found__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/other/Not-Found */ "./resources/js/src/pages/other/Not-Found/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _layouts_auth_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../layouts/auth/index */ "./resources/js/src/layouts/auth/index.js");
@@ -31047,7 +31222,7 @@ var AuthRoute = function AuthRoute() {
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_other_Not_Found__WEBPACK_IMPORTED_MODULE_3__["default"], {})
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
         path: "forgot-password",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((_pages_auth_forgot_password_index__WEBPACK_IMPORTED_MODULE_2___default()), {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_auth_forgot_password_index__WEBPACK_IMPORTED_MODULE_2__["default"], {})
       })]
     })
   });
