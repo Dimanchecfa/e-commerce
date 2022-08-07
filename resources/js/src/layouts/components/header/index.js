@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { isLogged } from '../../../service/account.service';
 import AuthButton from './AuthButton';
+import ConnectButton from './ConnetButton';
 import ProfileDropDown from './ProfilDropdown';
 
 
@@ -68,8 +69,10 @@ export default () => {
                   </div>
               </div>
               <div className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${ state ? 'h-screen pb-20 overflow-auto pr-4' : 'hidden'}`}>
-                    {isLogged() ? (
-                        <ProfileDropDown />) : (<AuthButton />)  }
+                    {isLogged() ? 
+                       
+                       
+                       <ProfileDropDown /> : (<AuthButton />)  }
                     <div className="flex-1">
                         <ul className="justify-center items-center space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
                             {

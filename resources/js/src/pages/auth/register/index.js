@@ -1,73 +1,65 @@
-import { TextField } from '@mui/material';
-import axios from 'axios';
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { register } from '../../../service/account.service';
-
-
+import { TextField } from "@mui/material";
+import axios from "axios";
+import React, { useState } from "react";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { register } from "../../../service/account.service";
 
 const Register = () => {
-    const [firstname , setFirstname] = useState('');
-    const [lastname , setLastname] = useState('');
-    const [email , setEmail] = useState('');
-    const [password , setPassword] = useState('');
-    const [confirmPassword , setConfirmPassword] = useState('');
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [ConfirmPassword, setConfirmPassword] = useState("");
 
-       const onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
         //verification de correspondance des mots de passes en direct
-        
 
-        
         //verification des champs
-        if (firstname !== '' && lastname !== '' && email !== '' && password !== '' && confirmPassword !== '') {
-
-            if (password === confirmPassword) {
+        if (
+            firstname !== "" &&
+            lastname !== "" &&
+            email !== "" &&
+            password !== "" &&
+            ConfirmPassword !== ""
+        ) {
+            if (password === ConfirmPassword) {
                 const credentials = {
                     firstname,
                     lastname,
                     email,
                     password,
-                    confirmPassword
+                    ConfirmPassword,
                 };
-                axios.post('http://127.0.0.1:8000/api/register', credentials)
+                axios
+                    .post("http://localhost:8000/api/register", credentials)
                     .then((res) => {
                         
-                            let user = res.data?.user;
-                            
-                            let goTo = "/auth/login";
-                            console.log(user);
-    
-                            
-    
-                            navigate(goTo);
-                            setTimeout(() => {
-                                Swal.fire({
-
-                                    title: "Inscription reussi",
-                                    showClass: {
-                                        popup: "animate__animated animate__fadeInDown",
-                                    },
-                                    hideClass: {
-                                        popup: "animate__animated animate__fadeOutUp",
-                                    },
-                                });
-                            })
-
                         
+                            Swal.fire({
+                                title: "Success",
+                                text: "Votre compte a été créé avec succès , vous pouvez vous connecter",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                timer: 2000,
+                            });
+                            console.log(res);
+                            //rediriger vers auth/login
+                            
+                        
+
                     })
                     .catch((err) => {
+                        console.log(err);
                         Swal.fire({
-                            title: "Erreur",
-                            text: "res.data.error",
+                            title: "Error",
+                            text: "Email has already been used",
                             icon: "error",
-                            confirmButtonText: "Ok",
-                            timer: 2000,
+                            confirmButtonText: "OK",
                         });
                     });
-            }
-            else {
+            } else {
                 Swal.fire({
                     title: "Erreur",
                     text: "Les mots de passes ne correspondent pas",
@@ -76,8 +68,7 @@ const Register = () => {
                     timer: 2000,
                 });
             }
-        }
-        else {
+        } else {
             Swal.fire({
                 title: "Erreur",
                 text: "Veuillez remplir tous les champs",
@@ -86,8 +77,7 @@ const Register = () => {
                 timer: 2000,
             });
         }
-    }
-
+    };
 
     return (
         <div className="min-h-full flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8 ">
@@ -104,10 +94,15 @@ const Register = () => {
                         </svg>
                         Veuillez remplir tous les champs!
                     </div> */}
-                    <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900">Sign Up</h2>
+                    <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900">
+                        Sign Up
+                    </h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
-                        Or{' '}
-                        <NavLink to="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        Or{" "}
+                        <NavLink
+                            to="/"
+                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                        >
                             Sign in to your account
                         </NavLink>
                     </p>
@@ -117,120 +112,111 @@ const Register = () => {
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">
-                            <TextField
-                                
-                                label="firstName"
-                                margin="normal"
-                                name="firstname"
-                                type="firstname"
-                                variant="outlined"
-                                size='small'
-                                value={firstname} 
-                                onChange={(e) => setFirstname(e.target.value)}  
-                            />
-    
+                                <TextField
+                                    label="firstName"
+                                    margin="normal"
+                                    name="firstname"
+                                    type="firstname"
+                                    variant="outlined"
+                                    size="small"
+                                    value={firstname}
+                                    onChange={(e) =>
+                                        setFirstname(e.target.value)
+                                    }
+                                />
                             </div>
 
                             <div className="col-span-6 sm:col-span-3">
-                            <TextField
-                                
-                                label="lastName"
-                                margin="normal"
-                                name="flastname"
-                                type="lastname"
-                                variant="outlined"
-                                size='small' 
-                                value={lastname}
-                                onChange={(e) => setLastname(e.target.value)}                              />      
-                                                         
-    
+                                <TextField
+                                    label="lastName"
+                                    margin="normal"
+                                    name="flastname"
+                                    type="lastname"
+                                    variant="outlined"
+                                    size="small"
+                                    value={lastname}
+                                    onChange={(e) =>
+                                        setLastname(e.target.value)
+                                    }
+                                />
                             </div>
                         </div>
-                        
-                            <div className="col-span-6 sm:col-span-3">
+
+                        <div className="col-span-6 sm:col-span-3">
                             <TextField
-                                
                                 label="Email Address"
                                 margin="normal"
                                 name="email"
                                 type="email"
                                 variant="outlined"
-                                size='small' 
-                                fullWidth    
+                                size="small"
+                                fullWidth
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}                              />
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
 
-                                                        
-                            </div>
-
-                            
-                       
-                        
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">
-                                
                                 <TextField
-                                
-                                label="password"
-                                margin="normal"
-                                name="password"
-                                type="password"
-                                variant="outlined"
-                                size='small'
-                                value={password}   
-                                onChange={(e) => setPassword(e.target.value)}                            />
+                                    label="password"
+                                    margin="normal"
+                                    name="password"
+                                    type="password"
+                                    variant="outlined"
+                                    size="small"
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                />
                             </div>
 
                             <div className="col-span-6 sm:col-span-3">
-                            <TextField
-                                
-                                label="Confirm Password"
-                                margin="normal"
-                                name="password"
-                                type="password"
-                                variant="outlined"
-                                size='small' 
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}                           
-                                                            />
-    
+                                <TextField
+                                    label="Confirm Password"
+                                    margin="normal"
+                                    name="password"
+                                    type="password"
+                                    variant="outlined"
+                                    size="small"
+                                    value={ConfirmPassword}
+                                    onChange={(e) =>
+                                        setConfirmPassword(e.target.value)
+                                    }
+                                />
                             </div>
                         </div>
                         <div className="flex items-center justify-between">
-                        <div className="flex items-center mt-2">
-                            <input
-                                id="remember-me"
-                                name="remember-me"
-                                type="checkbox"
-                                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-
-                            />
-                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                                I accept the terms of use
-                            </label>
+                            <div className="flex items-center mt-2">
+                                <input
+                                    id="remember-me"
+                                    name="remember-me"
+                                    type="checkbox"
+                                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                                />
+                                <label
+                                    htmlFor="remember-me"
+                                    className="ml-2 block text-sm text-gray-900"
+                                >
+                                    I accept the terms of use
+                                </label>
+                            </div>
                         </div>
-
-                        
                     </div>
-
-                    </div>
-
-
 
                     <div>
                         <button
                             type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                           
                             Sign up
                         </button>
                     </div>
                 </form>
             </div>
         </div>
-
     );
-}
+};
 
 export default Register;

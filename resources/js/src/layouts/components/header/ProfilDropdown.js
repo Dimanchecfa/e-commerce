@@ -2,6 +2,7 @@ import { Tooltip } from "@mui/material";
 import { useEffect, useRef, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom";
 import { getUser, logout } from "../../../service/account.service";
+import ConnectButton from "./ConnetButton";
 
 const ProfileDropDown = (props) => {
 
@@ -28,6 +29,7 @@ const ProfileDropDown = (props) => {
     return (
         <div className={`relative ${props.class}`}>
             <div className="flex items-center space-x-4">
+            <ConnectButton /> 
                
                 <Tooltip title={userInfo.first_name }  arrow placement="top">
                 <button
