@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Axios from "../../../service/caller.service";
 
 export default () => {
+    const [data , setData] = useState();
 
     const posts = [
         {
@@ -59,8 +61,21 @@ export default () => {
         },
        
     ]
+
    
-   
+
+    useEffect(() => {
+        setInterval(() => {
+            Axios.get("/annonce").then((res) => {
+                setData(res.data);
+                console.log(data);
+        
+            })
+            
+        
+       
+    }, 3000);
+})
 
 
 
@@ -95,41 +110,41 @@ export default () => {
                 </p>
             </div>
             <div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {posts.map((items, key) => (
+                {data.map((items, key) => (
                     <article
                         className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
                         key={key}
                     >
-                        <a href={items.href}>
+                        <a href="#">
                             <img
-                                src={items.img}
+                                src={items.image}
                                 loading="lazy"
-                                alt={items.title}
+                                alt={items.titre}
                                 className="w-full h-48 rounded-t-md"
                             />
                             <div className="flex items-center mt-2 pt-3 ml-4 mr-2">
                                 <div className="flex-none w-10 h-10 rounded-full">
-                                    <img
+                                    {/* <img
                                         src={items.authorLogo}
                                         className="w-full h-full rounded-full"
                                         alt={items.authorName}
-                                    />
+                                    /> */}
                                 </div>
                                 <div className="ml-3">
                                     <span className="block text-gray-900">
-                                        {items.authorName}
+                                        {items.poster_first_name}
                                     </span>
-                                    <span className="block text-gray-400 text-sm">
+                                    {/* <span className="block text-gray-400 text-sm">
                                         {items.date}
-                                    </span>
+                                    </span> */}
                                 </div>
                             </div>
                             <div className="pt-3 ml-4 mr-2 mb-3">
                                 <h3 className="text-xl text-gray-900">
-                                    {items.title}
+                                    {items.titre}
                                 </h3>
                                 <p className="text-gray-400 text-sm mt-1">
-                                    {items.desc}
+                                    {items.description}
                                 </p>
                             </div>
                         </a>
