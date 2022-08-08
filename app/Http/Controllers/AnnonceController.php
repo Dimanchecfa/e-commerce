@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Annonce;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class AnnonceController extends Controller
@@ -58,8 +59,9 @@ class AnnonceController extends Controller
             
             'titre' => 'required',
 
+
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            
 
         ]);
         if($validator->fails()) {
@@ -71,10 +73,12 @@ class AnnonceController extends Controller
         }
         try{
             $input = $request->all();
+            $input['uuid'] = Str::uuid();
+
             if($request->hasFile('image')) {
                 $file = $request->file('image');
                 $name = $file->getClientOriginalName();
-                $file->move(public_path().'/images/', $name);
+                $file->move(resource_path().'/images/', $name);
                 $input['image'] = $name;
             }
             $annonce = Annonce::create($input);
@@ -102,10 +106,10 @@ class AnnonceController extends Controller
      * @param  \App\Models\Annonce  $annonce
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Annonce $annonce , $uuid)
     {
         try {
-            $annonce = Annonce::where('id', $id)->first();
+            $annonce = Annonce::where('uuid', $uuid)->first();
             return response()->json([
                 'success' => true,
                 'message' => 'Annonce renvoyé avec succes',
@@ -194,7 +198,7 @@ class AnnonceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Annonce supprimé avec succes',
-                'annonce' => $annonce,
+                
             ]);
         }
         catch(Exception $e) {

@@ -10,10 +10,21 @@ class Annonce extends Model
     use HasFactory;
 
     protected $fillable = [
-        'poster_uuid',
-        'poster_premium',
+        'uuid',
+        'poster_first_name',
+        'poster_last_name',
+        
         'titre',
         'description',
         'image',
     ];
+
+    //utilisser l'uuid comme clé primaire
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
+
+
 }

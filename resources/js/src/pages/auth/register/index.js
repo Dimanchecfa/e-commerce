@@ -11,6 +11,7 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -45,6 +46,7 @@ const Register = () => {
                                 timer: 2000,
                             });
                             console.log(res);
+                            navigate('/auth/login')
                             //rediriger vers auth/login
                             
                         

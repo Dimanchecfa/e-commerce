@@ -42,7 +42,7 @@ const Login = () => {
 
         login(credentials)
             .then((res) => {
-                if (res.data.success == true) {
+                
                     let user = res.data?.user;
                     let success = res.data?.success;
                     let goTo = "/";
@@ -66,21 +66,18 @@ const Login = () => {
                             timer: 2000,
                         });
                     }, 500);
-                }
-                else {
-                    Swal.fire({
-                        title: "Erreur",
-                        text: "Email ou mot de passe incorrect",
-
-                        icon: "error",
-                        confirmButtonText: "Ok",
-                        timer: 2000,
-                    });
-                    
-                }
+                
+               
                 
             })
             .catch((err) => {
+                Swal.fire({
+                    title: "Erreur",
+                    text: "Email ou mot de passe incorrect",
+                    icon: "error",
+                    confirmButtonText: "Ok",
+                    timer: 1000,
+                });
                 
             });
     };
